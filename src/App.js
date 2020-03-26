@@ -13,21 +13,19 @@ import Settings from './components/Settings/Settings';
 
 const App = (props) => {
 
-    let posts = [
-        { ID: 1, message: 'Hi chuvack', likesCount: 12 },
-        { ID: 1, message: 'Hi', likesCount: 42 },
-        { ID: 1, message: 'Hi chuvack', likesCount: 1 },
-        { ID: 1, message: 'yoyo', likesCount: 19 },
-        { ID: 1, message: 'olala ', likesCount: 12 }
-    ]
+
 
     return <BrowserRouter>
         <div className="app-wrapper" >
             <Header />
             <Nav />
             <div className='app-wrapper-content'>
-                <Route path='/Dialogs' render={  () => Dialogs} />
-                <Route path='/Profile' render={  () => <Profile posts={posts} /> }/>
+                <Route path='/Dialogs'
+                    render={() => <Dialogs
+                        state={props.state.dialogsPage} />} />
+                <Route path='/Profile'
+                    render={() => <Profile
+                        state={props.state.profilePage} />} />
                 <Route path='/News' component={News} />
                 <Route path='/Music' component={Music} />
                 <Route path='/Settings' component={Settings} />

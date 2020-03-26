@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom';
 
 
 const DialogItem = (props) => {
-    let path = "/dialogs/" + props.id;
+    debugger;
+    let path = "/dialogs/" + props.ID;
 
     return (
         <div className={s.dialog + ' ' + s.active}>
