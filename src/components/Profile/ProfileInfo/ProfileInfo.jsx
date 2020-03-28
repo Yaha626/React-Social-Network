@@ -6,10 +6,10 @@ const ProfileInfo = () => {
     return (
         <div>
             <div>
-                <img src="http://fotorelax.ru/wp-content/uploads/2016/03/Beautiful-photos-and-pictures-on-various-subjects-01-1024x640.jpg"></img>
+                <img className={s.src} src="https://skinali-market.ru/upload/resize_cache/iblock/a48/1920_531_156420db5d35cfb82f16501d0f4565d1d/a483c3cadef147812418e4072c7033a2.jpg"></img>
             </div>
-            <div className="discriptionBlock">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQkEv-qnBqsUcDsmv7YgbjYzI1v0kdkQ404A0QuQ6EgXjWiXQ6z"></img>
+            <div className={s.discriptionBlock}>
+                <img src=" "></img>
       ava + description
            </div>
         </div>
