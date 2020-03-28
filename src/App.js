@@ -8,6 +8,7 @@ import Dialogs from './components/Dialogs/Dialogs';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
+import { addPost } from './redux/state';
 
 
 
@@ -22,10 +23,13 @@ const App = (props) => {
             <div className='app-wrapper-content'>
                 <Route path='/Dialogs'
                     render={() => <Dialogs
-                        state={props.state.dialogsPage} />} />
+                        state={props.state.dialogsPage}
+                    />} />
                 <Route path='/Profile'
                     render={() => <Profile
-                        state={props.state.profilePage} />} />
+                        state={props.state.profilePage}
+                        addPost={props.addPost}
+                    />} />
                 <Route path='/News' component={News} />
                 <Route path='/Music' component={Music} />
                 <Route path='/Settings' component={Settings} />
