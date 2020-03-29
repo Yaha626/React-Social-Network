@@ -1,9 +1,12 @@
-.header{
-    grid-area: h;
-    background-color: rgb(34,128,204);
-    }
-    
-    .header img {
-      height: 100%;
-      width: auto;
-    }
+.header {
+  grid-area: h;
+  background-color: rgb(34, 128, 204);
+  border-radius: 4px;
+  margin-bottom: 7px;
+}
+
+.header img {
+  height: 100%;
+  width: auto;
+  border-radius: 4px;
+}
