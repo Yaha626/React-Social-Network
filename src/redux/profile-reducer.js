@@ -30,7 +30,10 @@ let initialState = {
         }
     ],
     newPostText: 'IT-camasutra.com'
+
 }
+
+
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
