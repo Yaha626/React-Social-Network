@@ -5,7 +5,7 @@ let Users = (props) => {
 
     if (props.users.length === 0) {
         props.setUsers(
-            users[
+            users [
             {
                 photoURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRkkhSSkcL1wzlhau2nBESN0GtWi6Ity6ZWxfwFgjTwy95-rHsX&usqp=CAU',
                 ID: 1,
@@ -32,11 +32,11 @@ let Users = (props) => {
             }
             ]
         )
-    };
+    }
 
     return <div>
         {
-            props.users.map(u => <div key={u.ID}>
+            props.users.map( u => <div key={u.ID}>
                 <span>
                     <div>
                         <img src={u.photoURL} className={styles.userPhoto} />
@@ -50,7 +50,7 @@ let Users = (props) => {
                 </span>
                 <span>
                     <span>
-                        <div>{u.fillName}</div>
+                        <div>{u.fullName}</div>
                         <div>{u.status}</div>
                     </span>
                     <span>
