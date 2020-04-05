@@ -3,8 +3,7 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 
 let initialState = {
-    users: [
-    ]
+    users: [ ]
 };
 
 
@@ -14,7 +13,7 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 users: state.users.map(u => {
-                    if (u.ID === action.userId) {
+                    if (u.id === action.userId) {
                         return { ...u, followed: true }
                     }
                     return u;
@@ -25,7 +24,7 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 users: state.users.map(u => {
-                    if (u.ID === action.userId) {
+                    if (u.id === action.userId) {
                         return { ...u, followed: false }
                     }
                     return u;
