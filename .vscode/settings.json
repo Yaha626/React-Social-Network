@@ -1,3 +1,6 @@
 {
-    "materialTheme.accent": "Acid Lime"
+    "materialTheme.accent": "Acid Lime",
+    "cSpell.ignoreWords": [
+        "unfollow"
+    ]
 }
