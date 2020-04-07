@@ -1,8 +1,8 @@
-.content{
-    grid-area: c;
-    background-color: rgb(255,255,255);
-  }
+.content {
+  grid-area: c;
+  background-color: rgb(255, 255, 255);
+}
 
-  .item{
-     color: green; 
-  }
+.item {
+  color: green;
+}

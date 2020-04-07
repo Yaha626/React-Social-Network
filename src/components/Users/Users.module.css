@@ -1,15 +1,12 @@
-
-
 .userPhoto {
-width: 200px;
-height: 200px;
+  width: 200px;
+  height: 200px;
 }
 
 .selectedPage {
-    font-weight: bold;
-    
+  font-weight: bold;
 }
 
 .countPage {
-    cursor: pointer;
+  cursor: pointer;
 }

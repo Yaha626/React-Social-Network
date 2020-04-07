@@ -1,21 +1,20 @@
 .nav {
-    grid-area: n;
-    background-color: rgb(27,102,163);
-    padding: 20px;
-    border-radius: 5px;
-    margin-right: 7px;
+  grid-area: n;
+  background-color: rgb(27, 102, 163);
+  padding: 20px;
+  border-radius: 5px;
+  margin-right: 7px;
 }
 
 .item a {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 .item a.active {
-    background: #39f;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 4px;
-    padding: 2px;
-
+  background: #39f;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 2px;
 }
