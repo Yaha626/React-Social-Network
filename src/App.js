@@ -19,7 +19,7 @@ const App = () => {
             <div className='app-wrapper-content'>
                 <Route path='/Dialogs'
                     render={() => <DialogsContainer />} />
-                <Route path='/Profile'
+                <Route path='/Profile/:UserId?'
                     render={() => <ProfileContainer />} />
                 <Route path='/Users'
                     render={() => <UsersContainer />} />
