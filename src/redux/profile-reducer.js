@@ -76,7 +76,7 @@ export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 
 export const getUserProfile = (userId) => (dispatch) => {
     usersAPI.getProfile(userId).then(response => {
-        this.props.setUserProfile(response.data);
+        dispatch(setUserProfile(response.data));
     });
 }
 
