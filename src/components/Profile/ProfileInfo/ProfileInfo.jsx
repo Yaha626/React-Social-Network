@@ -6,9 +6,9 @@ import ProfileStatus from './ProfileStatus.jsx';
 
 
 const ProfileInfo = (props) => {
-    if (!props.profile) {
-        return <Preloader />
-    }
+    // if (!props.profile) {
+    //     return <Preloader />
+    // }
 
     return (
         <div>
