@@ -38,7 +38,7 @@ export const profileAPI = {
         return instance.get(`${baseUrl}profile/status/${userId}`);
     },
     updateStatus(status) {
-        return instance.put(`${baseUrl}profile/status`, {status: status});
+        return instance.put(`${baseUrl}profile/status`, { status: status });
     }
 
 }
@@ -48,9 +48,16 @@ export const profileAPI = {
 
 export const authAPI = {
     me() {
-        return instance.get(`${baseUrl}auth/me`)
+        return instance.get(`${baseUrl}auth/me`);
+    },
+    login(email, password, rememberMe = false) {
+        return instance.post(`${baseUrl}auth/login`, { email, password, rememberMe });
+    },
+    logout() {
+        return instance.delete(`${baseUrl}auth/login`);
     }
 }
+
 
 
 
