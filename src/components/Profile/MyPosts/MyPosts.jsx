@@ -1,39 +1,52 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
+import { Field, reduxForm } from 'redux-form';
+import { required, maxLengthCreator } from '../../../utils/validators/validators';
+import { Textarea } from '../../Сommon/components/FormsControls/FormsControls';
+
+const maxLength10 = maxLengthCreator(10);
+
+let AddNewPostForm = (props) => {
+    return <form onSubmit={props.handleSubmit}>
+        <div>
+            <Field name='newPostText' component={Textarea} placeholder={'Post message'}
+                validate={[required, maxLength10]} />
+        </div>
+        <div>
+            <button>Add post</button>
+        </div>
+    </form>;
+}
+
+let AddNewPostFormRedux = reduxForm({ form: 'ProfileAddNewPostForm' })(AddNewPostForm);
+
+
 
 const MyPosts = (props) => {
 
     let postsElements =
-        props.posts.map(p => <Post message={p.message} likesCount={p.likesCount} />)
+        props.posts.map(p => <Post message={p.message} likesCount={p.likesCount} />);
 
     let newPostElement = React.createRef();
 
-    let onAddPost = () => {
-        props.addPost();
+    let onAddPost = (values) => {
+        props.addPost(values.newPostText);
     }
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
         props.updateNewPostText(text);
     }
+
     return (
-        <div className={s.content}>
-            <div className={s.postsBlock}>
-                <h3>my posts</h3>
-                <div>
-                    <div>
-                        <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText} />
-                    </div>
-                    <div>
-                        <button onClick={onAddPost}>Add post</button>
-                    </div>
-                </div>
-                <div className={s.posts}>
-                    {postsElements}
-                </div>
+        <div className={s.postsBlock}>
+            <h3>my posts</h3>
+            <AddNewPostFormRedux onSubmit={onAddPost} />
+            <div className={s.posts}>
+                {postsElements}
             </div>
-        </div>
+        </div >
     )
 }
 
