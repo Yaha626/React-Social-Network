@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import { initializeApp } from './redux/app-reducer'
 import { compose } from 'redux';
 import Preloader from './components/Сommon/Preloader/Preloader';
+//import { getAuthUserData } from './redux/auth-reducer';
 
 class App extends Comment {
     componentDidMount() {
@@ -49,7 +50,7 @@ class App extends Comment {
 
 const mapStateToProps = (state) => ({
     initialized: state.app.initialized
-})
+});
 
 export default compose(
     withRouter,
