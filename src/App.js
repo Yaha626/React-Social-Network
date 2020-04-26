@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 import { initializeApp } from './redux/app-reducer'
 import { compose } from 'redux';
 import Preloader from './components/Сommon/Preloader/Preloader';
-//import { getAuthUserData } from './redux/auth-reducer';
+import { getAuthUserData } from './redux/auth-reducer';
 
 class App extends Comment {
     componentDidMount() {
