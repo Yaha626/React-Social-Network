@@ -1,7 +1,7 @@
 import { authAPI } from '../api/api'
 import { stopSubmit } from 'redux-form';
 
-const SET_USER_DATA = 'SET_USER_DATA';
+const SET_USER_DATA = 'samurai-network/auth/SET_USER_DATA';
 
 let initialState = {
     userId: null,
@@ -27,15 +27,13 @@ const authReducer = (state = initialState, action) => {
 
 export const setAuthUserData = (userId, email, login, isAuth) => ({ type: SET_USER_DATA, payload: { userId, email, login, isAuth } });
 
-export const getAuthUserData = () => (dispatch) => {
-
-    return authAPI.me()
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                let { Id, email, login } = response.data.data;
-                dispatch(setAuthUserData(Id, email, login, true));
-            }
-        });
+export const getAuthUserData = () => async (dispatch) => {
+    let response = await authAPI.me()
+    
+    if (response.data.resultCode === 0) {
+        let { Id, email, login } = response.data.data;
+        dispatch(setAuthUserData(Id, email, login, true));
+    }
 }
 
 
