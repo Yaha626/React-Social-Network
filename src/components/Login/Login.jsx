@@ -3,31 +3,33 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { login } from '../../redux/auth-reducer';
 import { Redirect } from 'react-router-dom';
-//import style from '../Сommon/components/FormsControls/FormsControls.module';
-//import { required } from '../../utils/validators/validators';
-//import { Input } from '../Сommon/components/FormsControls//FormsControls';
-const LoginForm = (props) => {
+import style from '../Сommon/components/FormsControls/FormsControls.module';
+import { required } from '../../utils/validators/validators';
+import { Input } from '../Сommon/components/FormsControls//FormsControls';
+
+
+const LoginForm = (handleSubmit, error) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div>
                 <Field placeholder={'Email'} name={"email"}
-                // validate={[required]}
-                // component={Input}
+                    validate={[required]}
+                    component={Input} />
                 />
             </div>
             <div>
                 <Field placeholder={'Password'} name={"password"} type={'password'}
-                // validate={[required]}
-                // component={Input} 
+                    validate={[required]}
+                    component={Input} />
                 />
             </div>
-            {/* <div>
-
+            <div>
                 <Field component={Input} name={"rememberMe"} type={'checkbox'} /> remember me
-            </div> */}
-            {/* {props.error && <div className={style.formSummaryError}>
-                {props.error}
-            </div>} */}
+            </div>
+            {error && <div className={style.formSummaryError}>
+                {error}
+            </div>
+            }
             <div>
                 <button>Login</button>
             </div>
@@ -36,7 +38,6 @@ const LoginForm = (props) => {
 }
 
 const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm)
-
 
 const Login = (props) => {
     const onSubmit = (formData) => {
