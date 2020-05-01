@@ -1,11 +1,11 @@
 import React from 'react';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { login } from '../../redux/auth-reducer';
 import { Redirect } from 'react-router-dom';
-import style from '../Сommon/components/FormsControls/FormsControls.module';
+import styles from './Login.module.css';
 import { required } from '../../utils/validators/validators';
-import { Input, createField } from '../Сommon/components/FormsControls//FormsControls';
+import { Input, createField } from '../Сommon/components/FormsControls/FormsControls';
 
 
 const LoginForm = ({ handleSubmit, error }) => {
@@ -14,7 +14,7 @@ const LoginForm = ({ handleSubmit, error }) => {
             {createField('Email', 'email', [required], Input)}
             {createField('Password', 'password', [required], Input, { type: 'password' })}
             {createField(null, 'rememberMe', [], Input, { type: 'password' }, 'remember me')}
-            {error && <div className={style.formSummaryError}>
+            {error && <div className={styles.formSummaryError}>
                 {error}
             </div>
             }
