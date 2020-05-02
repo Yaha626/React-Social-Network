@@ -1,12 +1,12 @@
 import React from 'react';
 import * as ReactDom from "react-dom";
-import App from './App';
+import SamuraiJSApp from './App';
 
 
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
 
-  ReactDom.render(<App/>, div);
+  ReactDom.render(<SamuraiJSApp/>, div);
   ReactDom.unmountComponentAtNode(div);
 });
