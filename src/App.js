@@ -37,10 +37,9 @@ class App extends Component {
                 <Nav />
                 <div className='app-wrapper-content'>
                     <Route path='/dialogs'
-                        render={withSuspense(ProfileContainer)} />
-                    <Route path='/profile/:userId?'
                         render={withSuspense(DialogsContainer)} />
-                        render={() => <DialogsContainer />} />
+                    <Route path='/profile/:userId?'
+                        render={withSuspense(ProfileContainer)} />
                     <Route path='/users'
                         render={() => <UsersContainer />} />
                     <Route path='/login'
