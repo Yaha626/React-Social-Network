@@ -8,6 +8,7 @@ let Users = (CurrentPage, onPageChanged, totalItemsCount, pageSize, users, ...pr
             totalItemsCount={totalItemsCount} pageSize={pageSize} />
         <div>
             {
+
                 users.map(u => <User user={u}
                     followingInProgress={props.followingInProgress}
                     key={u.id}

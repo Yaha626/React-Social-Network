@@ -1,11 +1,15 @@
 .descriptionBlock {
-  padding: 10px;
+    padding: 10px;
 }
 
 .src {
-  width: 100%;
+    width: 100%;
 }
 
 .mainPhoto {
-  max-width: 200px;
+    max-width: 200px;
+}
+
+.contact {
+    padding-left: 10px;
 }
