@@ -135,8 +135,10 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
     if (response.data.resultCode === 0) {
         dispatch(getUserProfile(userId));
     } else {
-        dispatch(stopSubmit('edit-profile', {'contacts':{'facebook':  response.data.messages[0]}}));
+        dispatch(stopSubmit('edit-profile', {'contacts':  response.data.messages[0]}));
+        //dispatch(stopSubmit('edit-profile', {'contacts':{'facebook':  response.data.messages[0]}}));
         // фэйсбук захардкодили, его нужно ставить динамически
+    return Promise.reject(response.data.messages[0]);
     }
 }
 
