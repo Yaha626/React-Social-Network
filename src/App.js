@@ -1,5 +1,5 @@
-import React, { Component, Suspense } from 'react';
-import {Route, withRouter, BrowserRouter, Redirect} from 'react-router-dom';
+import React, { Component } from 'react';
+import {Route, withRouter, BrowserRouter, Redirect, Switch} from 'react-router-dom';
 import './App.css';
 import Nav from './components/Navbar/Navbar';
 import HeaderContainer from './components/Header/HeaderContainer';
@@ -14,16 +14,14 @@ import { compose } from 'redux';
 import Preloader from './components/Сommon/Preloader/Preloader';
 import store from './redux/redux-store';
 import { withSuspense } from './hoc/withSuspense';
-import Switch from "react-router-dom/es/Switch";
 
-//import ProfileContainer from './components/Profile/ProfileContainer';
-//import DialogsContainer from './components/Dialogs/DialogsContainer';
+
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
 
 class App extends Component {
-    catchAllUnhandledErrors = (promiseRejectionEvent) => {
+    catchAllUnhandledErrors = (reason, promise) => {
         alert('Some error occured');
 
     }
@@ -31,11 +29,9 @@ class App extends Component {
         this.props.initializeApp();
         window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors);
     }
-
     componentWillUnmount() {
         window.removeEventListener('unhandledrejection', this.catchAllUnhandledErrors);
     }
-
 
     render() {
         if (!this.props.initialized) {
@@ -50,7 +46,7 @@ class App extends Component {
                     <Switch>
                         <Route exact path='/'
                                render={()  => <Redirect to={'/profile'}/>} />
-                    <Route path='/dialogs'
+                               <Route path='/dialogs'
                         render={withSuspense(DialogsContainer)} />
                     <Route path='/profile/:userId?'
                         render={withSuspense(ProfileContainer)} />
@@ -72,7 +68,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
     initialized: state.app.initialized
-});
+})
 
 let AppContainer = compose(
     withRouter,
