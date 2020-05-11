@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from 'react';
-import { Route, withRouter, BrowserRouter } from 'react-router-dom';
+import {Route, withRouter, BrowserRouter, Redirect} from 'react-router-dom';
 import './App.css';
 import Nav from './components/Navbar/Navbar';
 import HeaderContainer from './components/Header/HeaderContainer';
@@ -14,6 +14,7 @@ import { compose } from 'redux';
 import Preloader from './components/Сommon/Preloader/Preloader';
 import store from './redux/redux-store';
 import { withSuspense } from './hoc/withSuspense';
+import Switch from "react-router-dom/es/Switch";
 
 //import ProfileContainer from './components/Profile/ProfileContainer';
 //import DialogsContainer from './components/Dialogs/DialogsContainer';
@@ -22,9 +23,19 @@ const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileCo
 
 
 class App extends Component {
+    catchAllUnhandledErrors = (promiseRejectionEvent) => {
+        alert('Some error occured');
+
+    }
     componentDidMount() {
         this.props.initializeApp();
+        window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors);
     }
+
+    componentWillUnmount() {
+        window.removeEventListener('unhandledrejection', this.catchAllUnhandledErrors);
+    }
+
 
     render() {
         if (!this.props.initialized) {
@@ -36,6 +47,9 @@ class App extends Component {
                 <HeaderContainer />
                 <Nav />
                 <div className='app-wrapper-content'>
+                    <Switch>
+                        <Route exact path='/'
+                               render={()  => <Redirect to={'/profile'}/>} />
                     <Route path='/dialogs'
                         render={withSuspense(DialogsContainer)} />
                     <Route path='/profile/:userId?'
@@ -47,6 +61,9 @@ class App extends Component {
                     <Route path='/news' component={News} />
                     <Route path='/music' component={Music} />
                     <Route path='/settings' component={Settings} />
+                        <Route path='*'
+                               render={() => <div>404 NOT FOUND</div>} />
+                </Switch>
                 </div>
             </div>
         )
