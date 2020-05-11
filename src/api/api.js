@@ -1,4 +1,4 @@
-import *as axios from 'axios';
+import * as axios from 'axios';
 
 
 const instance = axios.create({
@@ -17,13 +17,13 @@ export const usersAPI = {
             });
     },
     follow(userId) {
-        return instance.post(`follow/${userId}`);
+        return instance.post(`follow/${userId}`)
     },
     unfollow(userId) {
-        return instance.delete(`follow/${userId}`);
+        return instance.delete(`follow/${userId}`)
     },
     getProfile(userId) {
-        console.warn('Obsolete method. Please profileAPI object');
+        console.warn('Obsolete method. Please profileAPI object')
         return profileAPI.getProfile(userId);
     }
 }

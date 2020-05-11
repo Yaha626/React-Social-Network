@@ -36,7 +36,6 @@ let initialState = {
             likesCount: 12
         }
     ],
-    newPostText: 'IT-camasutra.com',
     profile: null,
     status: ''
 
@@ -91,14 +90,12 @@ const profileReducer = (state = initialState, action) => {
 
         case SAVE_PHOTO_SUCCESS:
             return { ...state, profile: {...state.profile, photos: action.photos} }
-
-
         default:
             return state;
     }
 };
 
-export const addPostActionCreator = () => ({ type: ADD_POST });
+export const addPostActionCreator = (newPostText) => ({ type: ADD_POST, newPostText });
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
 export const setStatus = (status) => ({ type: SET_STATUS, status });
 export const deletePost = (postId) => ({ type: DELETE_POST, postId });
@@ -106,19 +103,23 @@ export const savePhotoSuccess = (photos) => ({ type: SAVE_PHOTO_SUCCESS, photos 
 
 
 export const getUserProfile = (userId) => async (dispatch) => {
-    let response = await usersAPI.getProfile(userId)
+    const response = await usersAPI.getProfile(userId)
     dispatch(setUserProfile(response.data));
 }
 
 export const getStatus = (userId) => async (dispatch) => {
-    let response = await profileAPI.getStatus(userId);
+    const response = await profileAPI.getStatus(userId);
     dispatch(setStatus(response.data));
 }
 
 export const updateStatus = (status) => async (dispatch) => {
-    let response = await profileAPI.updateStatus(status)
-    if (response.data.resultCode === 0) {
-        dispatch(setStatus(status));
+    try {
+        let response = await profileAPI.updateStatus(status)
+        if (response.data.resultCode === 0) {
+            dispatch(setStatus(status));
+        }
+    } catch (error) {
+        //
     }
 }
 
